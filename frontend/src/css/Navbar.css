@@ -1,0 +1,27 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-left {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff2f00;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navbar-right {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff2f00;
+    text-decoration: none;
+    cursor: pointer;
+}

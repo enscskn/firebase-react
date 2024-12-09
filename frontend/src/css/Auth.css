@@ -1,0 +1,52 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 24px;
+}
+
+.auth-container h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    margin: 8px;
+}
+
+.input {
+    margin: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Changed from column to row */
+    margin: 8px;
+}
+
+.btn {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: auto; /* Changed from 100% to auto */
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin: 0 4px; /* Added margin to create space between buttons */
+}
+
+.btn-google {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: auto; /* Changed from 100% to auto */
+    background-color: #db4437;
+    color: white;
+    cursor: pointer;
+    margin: 0 4px; /* Added margin to create space between buttons */
+}
+
