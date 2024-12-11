@@ -1,12 +1,28 @@
 import React, { useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify';
 import { auth } from '../Firebase'
+import { useNavigate } from 'react-router-dom'
 import '../css/Auth.css'
 
 function Auth() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+
+  const login = async () => {
+    try {
+      const response = await signInWithEmailAndPassword(auth, email, password);
+      const user = response.user;
+      if (user) {
+        toast.success('Giriş yapıldı')
+        navigate('/')
+      }
+    } catch (error) {
+      const message = error.message
+      toast.error(message)
+    }
+  }
 
   const register = async () => {
     try {
@@ -44,7 +60,7 @@ function Auth() {
       </div>
       <div className='button-container'>
         <button className='btn-google'>Google ile Giriş Yap</button>
-        <button className='btn' style={{ backgroundColor: '#28a745', color: 'white' }}>Giriş Yap</button>
+        <button onClick={login} className='btn' style={{ backgroundColor: '#28a745', color: 'white' }}>Giriş Yap</button>
         <button onClick={register} className='btn'>Kayıt Ol</button>
       </div>
     </div>
