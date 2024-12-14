@@ -1,14 +1,33 @@
 import React, { useState } from 'react'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { toast } from 'react-toastify';
 import { auth } from '../Firebase'
 import { useNavigate } from 'react-router-dom'
+
 import '../css/Auth.css'
+
+const provider = new GoogleAuthProvider();
 
 function Auth() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+
+  const loginwithGoogle = async () => {
+    try {
+      const response = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(response);
+      const token = credential.accessToken;
+      const user = response.user;
+      if (user) {
+        toast.success('Google ile giriş yapıldı')
+        navigate('/')
+      }
+    } catch (error) {
+      const message = error.message
+      toast.error(message)
+    }
+  }
 
   const login = async () => {
     try {
@@ -59,7 +78,7 @@ function Auth() {
         />
       </div>
       <div className='button-container'>
-        <button className='btn-google'>Google ile Giriş Yap</button>
+        <button onClick={loginwithGoogle} className='btn-google'>Google ile Giriş Yap</button>
         <button onClick={login} className='btn' style={{ backgroundColor: '#28a745', color: 'white' }}>Giriş Yap</button>
         <button onClick={register} className='btn'>Kayıt Ol</button>
       </div>

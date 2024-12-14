@@ -1,9 +1,10 @@
 import React from 'react'
-import '../css/Navbar.css'
 import { signOut } from 'firebase/auth'
 import { auth } from '../Firebase'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
+import '../css/Navbar.css'
 
 function Navbar() {
   const navigate = useNavigate()
